@@ -5,10 +5,10 @@ This guide details the essential steps for securing a Linux server according to 
 The aim of the scripts in this directory was to answer the question below;
 > **Networking and Security**  
 > Security is a **top priority** at HypotheticalCorp. Your company policy requires:  
-> **Your tasks are to configure these security measures on your Linux server?**  
-    > - Blocking all incoming traffic except SSH and HTTP.
-    > - Checking which ports are currently open on the system.
-    > - Setting up an SSH key-based authentication to eliminate password logins.
+> **Your tasks are to configure these security measures on your Linux server?**    
+>    - Blocking all incoming traffic except SSH and HTTP.
+>    - Checking which ports are currently open on the system.
+>    -  Setting up an SSH key-based authentication to eliminate password logins.
 
 ## Port Scanning
 ### Checking Open Ports
