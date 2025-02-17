@@ -218,6 +218,8 @@ DenyUsers intern1 intern2
 sudo systemctl restart ssh
 ```
 
+![pernission-setup](../images/chmod3.png)
+
 ## Common Challenges Encountered While Running The Script
 1. Permission denied" when running script
     - Solution: Run with sudo

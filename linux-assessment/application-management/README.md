@@ -27,6 +27,10 @@ sudo ./nginx-install.sh
 ```
 That's it! The script will handle everything else.
 
+![setting-up-script](../images/app-mgt.png)
+![Running-script](../images/app-mgt1.png)
+![confirmation-nginx-is-working](../images/app-mgt2.png)
+
 ## What Does The Script Actually Do?
 Let's break down what the script sets up for you:
 1. Installation & Basic Setup
@@ -80,6 +84,17 @@ tail -f /var/log/nginx/access.log
 ```sh
 journalctl -u nginx
 ```
+
+## Common Challenges Encountered While Running The Script
+1. Permission denied" when running script
+    - Solution: Run with sudo
+
+2. CURL service not found
+    - Solution: Install curl on my local machine
+```sh
+sudo apt install curl
+```
+
 
 ## Common Questions
 #### Q: Will this overwrite my existing Nginx setup?
