@@ -5,6 +5,7 @@ Before creating the VMs, you need an SSH key to securely access them. If you don
 ```sh
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/nexascale_key
 ```
+!["create ssh key"](../../images/net1.png)
 
 #### 2. Step 2: Create a Resource Group
 Now, create a resource group called nexascale:
@@ -56,8 +57,9 @@ az vm list-ip-addresses --resource-group nexascale --output table
 
 az vm list --resource-group nexascale --show-details --output table
 ```
+!["verification that all virtual machines are running fine"](../../images/net4.png)
 
-**How to Access the Virtual Machines
+**How to Access the Virtual Machines**
 ```sh
 # Loadbalancer Server
 ssh -i ~/.ssh/nexascale_key azureuser@172.172.171.50
@@ -67,11 +69,4 @@ ssh -i ~/.ssh/nexascale_key azureuser@40.71.191.134
 ssh -i ~/.ssh/nexascale_key azureuser@172.191.95.80
 ```
 
-
-Log into the Loadbalancer Server,
-This would server as the master node
-
-And create an ssh key on the server 
-```
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/ansible_key
-```
+#### Log into the Loadbalancer Server, this would server as the master node
