@@ -1,0 +1,51 @@
+---
+- name: Deploy Flask Applications
+  hosts: webservers
+  become: yes
+  tasks:
+
+    - name: Install dependencies
+      apt:
+        name:
+          - apache2
+          - python3
+          - python3-venv
+          - python3-pip
+        state: present
+        update_cache: yes
+
+    - name: Upload Flask Time Zone App to Webserver1 (Lagos)
+      copy:
+        src: files/web-app/app.py
+        dest: /var/www/html/app.py
+        owner: www-data
+        group: www-data
+        mode: '0644'
+      when: inventory_hostname == "webserver1"
+
+    - name: Upload Flask Time Zone App to Webserver2 (US)
+      copy:
+        src: files/web-app/us-app.py
+        dest: /var/www/html/app.py
+        owner: www-data
+        group: www-data
+        mode: '0644'
+      when: inventory_hostname == "webserver2"
+
+    - name: Upload WSGI script
+      copy:
+        src: files/app.wsgi
+        dest: /var/www/html/app.wsgi
+        owner: www-data
+        group: www-data
+        mode: '0644'
+
+    - name: Install Flask dependencies
+      pip:
+        requirements: /var/www/html/requirements.txt
+        executable: pip3
+
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted

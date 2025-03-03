@@ -1,0 +1,6 @@
+[webservers]
+webserver1 ansible_host=40.71.191.134 ansible_user=azureuser ansible_ssh_private_key_file=~/.ssh/nexascale_key
+webserver2 ansible_host=172.191.95.80 ansible_user=azureuser ansible_ssh_private_key_file=~/.ssh/nexascale_key
+
+[loadbalancer]
+loadbalancer ansible_host=172.172.171.50 ansible_user=azureuser ansible_ssh_private_key_file=~/.ssh/nexascale_key                                                                                                                                                                                                                                                                                                                                                                                                   

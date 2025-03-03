@@ -1,0 +1,22 @@
+---
+- name: Install and Configure Apache on Web Servers
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+
+    - name: Start and Enable Apache
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Allow Apache in firewall
+      ufw:
+        rule: allow
+        port: 80
+        proto: tcp
