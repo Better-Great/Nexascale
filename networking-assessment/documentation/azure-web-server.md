@@ -1,20 +1,20 @@
+# Azure Virtual Machines Set-up
 
-
-#### 1. Create an SSH Key 
+## 1. Create an SSH Key 
 Before creating the VMs, you need an SSH key to securely access them. If you don’t have an SSH key, create one using:
 ```sh
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/nexascale_key
 ```
 !["create ssh key"](../../images/net1.png)
 
-#### 2. Step 2: Create a Resource Group
+## 2. Step 2: Create a Resource Group
 Now, create a resource group called nexascale:
 ```sh 
 az group create --name nexascale --location eastus
 ```
 Azure free services are region-specific, so I opted for `eastus`
 
-#### Step 3: Create the VMs
+## Step 3: Create the VMs
 **1. Create the Load Balancer VM**
 ```sh
 az vm create \
@@ -51,7 +51,7 @@ az vm create \
   --public-ip-address webserver2-ip
 ```
 
-**Verify Everything**
+### Step 4: Verify VM Creation
 ```sh
 az vm list-ip-addresses --resource-group nexascale --output table
 
