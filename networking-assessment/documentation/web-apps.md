@@ -35,6 +35,7 @@ Run the Lagos application on **port 8080:**
 python app.py
 ```
 Open http://localhost:8080 in your browser to see the Lagos time page.
+
 !["content of lagos app"](../../images/net10.png)
 #### Step 3: Start the New York App
 Run the New York application on **port 8090:**
@@ -42,4 +43,5 @@ Run the New York application on **port 8090:**
 python us-app.py
 ```
 Open http://localhost:8090 in your browser to see the New York time page.
+
 !["content of new york app"](../../images/net11.png)
