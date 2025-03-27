@@ -1,37 +1,26 @@
-import os
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+import requests
 
-# Load email credentials from environment variables
-EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
-EMAIL_RECIPIENT = os.getenv("EMAIL_RECIPIENT")  # Load recipient email
+BASE_URL = "https://7892-197-210-76-101.ngrok-free.app"  
 
-# Ensure required environment variables are set
-if not EMAIL_HOST_USER or not EMAIL_HOST_PASSWORD or not EMAIL_RECIPIENT:
-    raise ValueError("❌ EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, or EMAIL_RECIPIENT is not set!")
+def test_sendmail():
+    print("Testing /sendmail endpoint:")
+    response = requests.get(f"{BASE_URL}/sendmail", params={"sendmail": "test@example.com"})
+    print(response.json())
 
-# Email details
-sender_email = EMAIL_HOST_USER
-recipient_email = EMAIL_RECIPIENT  # Use env variable for recipient
-subject = "Test Email from Flask App"
-body = "This is a test email to verify SMTP settings."
+def test_talktome():
+    print("\nTesting /talktome endpoint:")
+    response = requests.get(f"{BASE_URL}/talktome")
+    print(response.json())
 
-# Create email message
-msg = MIMEMultipart()
-msg["From"] = sender_email
-msg["To"] = recipient_email
-msg["Subject"] = subject
-msg.attach(MIMEText(body, "plain"))
+def test_logs():
+    print("\nTesting /logs endpoint:")
+    response = requests.get(f"{BASE_URL}/logs")
+    print(f"Total log lines: {len(response.json().get('logs', []))}")
 
-try:
-    # Connect to Gmail SMTP server (using port 465 for SSL)
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
-        server.sendmail(sender_email, recipient_email, msg.as_string())
+def main():
+    test_sendmail()
+    test_talktome()
+    test_logs()
 
-    print(f"✅ Test email sent successfully to {recipient_email}!")
-
-except Exception as e:
-    print(f"❌ Failed to send test email: {e}")
+if __name__ == "__main__":
+    main()
